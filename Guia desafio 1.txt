@@ -1,5 +1,0 @@
-23-10
-
-Me quedé en resolver como hay que hacer para que vuelva el ciclo si la opción que agrego es inválida.
-
-ademas tengo que agregar una function
