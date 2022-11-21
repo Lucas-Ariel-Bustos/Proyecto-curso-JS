@@ -241,6 +241,7 @@ buttonAgregarExcursión.onclick = () => {
     const indexExc = selectExcursion.selectedIndex
     const excursionElegida = excursionesArray[indexExc]
     carrito.push(excursionElegida)
+    console.log('Excursión elegida ' + carrito)
 }
 
 // console.log(comidasArray)
@@ -248,7 +249,9 @@ buttonAgregarComida.onclick = () => {
     const indexCom = selectComidas.selectedIndex
     const comidaElegida = comidasArray[indexCom]
     carrito.push(comidaElegida)
+    console.log('Comida Elegida ' + carrito)
 }
+
 
 buttonFinalizar.onclick = () =>{
     let totalCompra = 0
