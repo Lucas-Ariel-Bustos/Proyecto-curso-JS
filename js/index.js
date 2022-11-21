@@ -192,11 +192,10 @@ const excursionCristoRedento = new Excursion(7, 'cristo Redentor', 10000, 25)
 
 const excursionesArray = [excursionPotrerillos, excursionPotrerillosCompleto, excursionVillavicencio, excursionuspallata, excursionVillavicencioUspallata, excursionPuenteDelInca, excursionCristoRedento]
 
-const excursionesStorageJSON = JSON.stringify(excursionesArray)
-localStorage.setItem('Excursiones', excursionesStorageJSON)
 
-const excursionesEnLocalStorage = localStorage.getItem('excursionesArray')
-const excursionesArrayJSON = JSON.parse(excursionesEnLocalStorage)
+localStorage.setItem('Excursiones', JSON.stringify(excursionesArray));
+
+const excursionesEnLocalStorage = JSON.parse(localStorage.getItem('excursionesArray')); 
 
 excursionesArray.forEach(prod=>{
     let opcionesExcursion = document.createElement('option')
@@ -241,7 +240,7 @@ buttonAgregarExcursión.onclick = () => {
     const indexExc = selectExcursion.selectedIndex
     const excursionElegida = excursionesArray[indexExc]
     carrito.push(excursionElegida)
-    console.log('Excursión elegida ' + carrito)
+    console.log(carrito)
 }
 
 // console.log(comidasArray)
@@ -249,7 +248,7 @@ buttonAgregarComida.onclick = () => {
     const indexCom = selectComidas.selectedIndex
     const comidaElegida = comidasArray[indexCom]
     carrito.push(comidaElegida)
-    console.log('Comida Elegida ' + carrito)
+    console.log(carrito)
 }
 
 
