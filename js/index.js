@@ -173,6 +173,7 @@ const selectComidas = document.getElementById ('comidas')
 const buttonAgregarComida = document.getElementById ('agregarComida')
 const buttonFinalizar = document.getElementById ('finalizar')
 
+// ********EXCURSIONES*******
 class Excursion {
     constructor(id, nombre, precio, stock){
         this.id = id
@@ -191,16 +192,17 @@ const excursionCristoRedento = new Excursion(7, 'cristo Redentor', 10000, 25)
 
 const excursionesArray = [excursionPotrerillos, excursionPotrerillosCompleto, excursionVillavicencio, excursionuspallata, excursionVillavicencioUspallata, excursionPuenteDelInca, excursionCristoRedento]
 
+const excursionesStorageJSON = JSON.stringify(excursionesArray)
+localStorage.setItem('Excursiones', excursionesStorageJSON)
+
+const excursionesEnLocalStorage = localStorage.getItem('excursionesArray')
+const excursionesArrayJSON = JSON.parse(excursionesEnLocalStorage)
+
 excursionesArray.forEach(prod=>{
     let opcionesExcursion = document.createElement('option')
     opcionesExcursion.innerText = `${prod.nombre}: $${prod.precio}`
     selectExcursion.append(opcionesExcursion)
 })
-
-// let excursionMendoza = []
-// if (localStorage.getItem('excursionMendoza')) {
-//     excursionMendoza = JSON.parse(localStorage.getItem('excursionMendoza'))
-// }
 
 // *********MENÚ DE COMIDA*********
 
@@ -219,6 +221,12 @@ const pastas = new Comida(4, 'Pastas', 1500)
 
 const comidasArray = [comidaPolloConGuarnicion, milanesaConGuarnicion, sangucheDeJamionCrudo, pastas]
 
+const comidasStorageJSON = JSON.stringify(comidasArray)
+localStorage.setItem('Comidas', comidasStorageJSON)
+
+const comidasEnLocalStorage = localStorage.getItem('comidasArray')
+const comidasArrayJSON = JSON.parse(comidasEnLocalStorage)
+
 comidasArray.forEach(prod=>{
     let opcionesComidas = document.createElement('option')
     opcionesComidas.innerText = `${prod.nombre}: $${prod.precio}`
@@ -232,16 +240,15 @@ const carrito = []
 buttonAgregarExcursión.onclick = () => {
     const indexExc = selectExcursion.selectedIndex
     const excursionElegida = excursionesArray[indexExc]
-    console.log(excursionElegida)
+    carrito.push(excursionElegida)
 }
 
 // console.log(comidasArray)
 buttonAgregarComida.onclick = () => {
     const indexCom = selectComidas.selectedIndex
     const comidaElegida = comidasArray[indexCom]
-    console.log(comidaElegida)
+    carrito.push(comidaElegida)
 }
-
 
 buttonFinalizar.onclick = () =>{
     let totalCompra = 0
@@ -250,30 +257,3 @@ buttonFinalizar.onclick = () =>{
     })
     console.log(`Total $${totalCompra}`)
 }
-
-// let comidaExcursion = []
-// if (localStorage.getItem('comidaExcursion')) {
-//     comidaExcursion = JSON.parse(localStorage.getItem('comidaExcursión'))
-// }
-
-// // Este onclick es para que el vendedor ingrese los productos
-// buttonFinalizar.onclick = () =>{
-//     const productoNuevo = new Excursion(inputNombre.value, inputPrecio.value, inputStock.value)
-//     productos.push (productoNuevo)
-//     console.log(productos)
-// }
-
-// const escursionArray = JSON.parse(localStorage.getItem('excursionMendoza'))
-// productosArray.forEach(prod=>{
-//     const opcionExcursiones = document.createElement('option')
-//     selectExcursión.append(opcionExcursiones)
-// })
-
-// const comidaArray = JSON.parse(localStorage.getItem('comidaExcursion'))
-
-// productosArray.forEach(prod=>{
-//     const opcionComida = document.createElement('option')
-//     optionComida.innerText = `${prod.nombre}: ${prod.precio}`
-//     optionProd.setAttribute('id', `${prod.nombre}`)
-//     selectExcursión.append(opcionComida)
-// })
