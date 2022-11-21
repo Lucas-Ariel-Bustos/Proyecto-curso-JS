@@ -18,7 +18,7 @@
 // const bebidas = ['Coca-Cola', 'Agua con gas', 'Agua sin gas', 'Agua saborizada']
 
 // //Objetos
-// function Lugar (lugar, duracion, horarioSalida, horarioLlegada,distancia, paradas) {
+// function Lugar (lugar, duracion, horarioSalida, horarioLlegada, distancia, paradas) {
 //     this.lugar = lugar
 //     this.duracion = duracion
 //     this.horarioSalida = horarioSalida;
@@ -181,39 +181,28 @@ class Excursion {
         this.stock = stock
     }
 }
-const excursionPotrerillos = new Excursion(1, 'potrerillosDique', 5000, 25)
-const excursionPotrerillosCompleto = new Excursion(2, 'potrerillosCompleto', 6000, 25)
+const excursionPotrerillos = new Excursion(1, 'potrerillos-Dique', 5000, 25)
+const excursionPotrerillosCompleto = new Excursion(2, 'potrerillos-Completo', 6000, 25)
 const excursionVillavicencio = new Excursion(3, 'villavicencio', 5000, 25)
-const uspallata = new Excursion(4, 'Uspallata', 6000, 25)
-const excursionVillavicencioUspallata = new Excursion(5, 'villavicencioUspallata', 8000, 25)
-const excursionPuenteDelInca = new Excursion(6, 'puenteDelInca', 5000, 25)
-const excursionCristoRedento = new Excursion(7, 'cristoRedentor', 10000, 25)
+const excursionuspallata = new Excursion(4, 'Uspallata', 6000, 25)
+const excursionVillavicencioUspallata = new Excursion(5, 'villavicencio-Uspallata', 8000, 25)
+const excursionPuenteDelInca = new Excursion(6, 'puente del Inca', 5000, 25)
+const excursionCristoRedento = new Excursion(7, 'cristo Redentor', 10000, 25)
 
-// const excursionesArray = 
+const excursionesArray = [excursionPotrerillos, excursionPotrerillosCompleto, excursionVillavicencio, excursionuspallata, excursionVillavicencioUspallata, excursionPuenteDelInca, excursionCristoRedento]
 
-// excursionArray.forEach(prod=>{
-//     const opcionesExcursion = document.createElement('option')
-//     opcionesExcursion.innerText = `${prod.nombre}: ${prod.precio}`
-//     selectExcursion.append(opcionesExcursion)
-// })
-
-const selectProd = document.getElementById("excursiones") 
-// ----------> "Lista" es el id del select en el HTML
-
-productosArray.forEach(elemento => {
-    const optionProd = document.createElement("option")
-    optionProd.innerText = `${elemento.name}: ${elemento.price}`
-    optionProd.setAttribute("id", `${elemento.id}`)
-    selectProd.append(optionProd)
+excursionesArray.forEach(prod=>{
+    let opcionesExcursion = document.createElement('option')
+    opcionesExcursion.innerText = `${prod.nombre}: $${prod.precio}`
+    selectExcursion.append(opcionesExcursion)
 })
 
+// let excursionMendoza = []
+// if (localStorage.getItem('excursionMendoza')) {
+//     excursionMendoza = JSON.parse(localStorage.getItem('excursionMendoza'))
+// }
 
-
-
-let excursionMendoza = []
-if (localStorage.getItem('excursionMendoza')) {
-    excursionMendoza = JSON.parse(localStorage.getItem('excursionMendoza'))
-}
+// *********MENÚ DE COMIDA*********
 
 class Comida {
     constructor(id, nombre, precio){
@@ -227,6 +216,40 @@ const comidaPolloConGuarnicion = new Comida(1, 'Pollo', 1500)
 const milanesaConGuarnicion = new Comida(2, 'Milanesa', 1500)
 const sangucheDeJamionCrudo = new Comida(3, 'Sanguche', 1200)
 const pastas = new Comida(4, 'Pastas', 1500)
+
+const comidasArray = [comidaPolloConGuarnicion, milanesaConGuarnicion, sangucheDeJamionCrudo, pastas]
+
+comidasArray.forEach(prod=>{
+    let opcionesComidas = document.createElement('option')
+    opcionesComidas.innerText = `${prod.nombre}: $${prod.precio}`
+    selectComidas.append(opcionesComidas)
+})
+
+// *******CARRITO*******
+
+const carrito = [] 
+// console.log(excursionesArray)
+buttonAgregarExcursión.onclick = () => {
+    const indexExc = selectExcursion.selectedIndex
+    const excursionElegida = excursionesArray[indexExc]
+    console.log(excursionElegida)
+}
+
+// console.log(comidasArray)
+buttonAgregarComida.onclick = () => {
+    const indexCom = selectComidas.selectedIndex
+    const comidaElegida = comidasArray[indexCom]
+    console.log(comidaElegida)
+}
+
+
+buttonFinalizar.onclick = () =>{
+    let totalCompra = 0
+    carrito.forEach(prod=>{
+        totalCompra = totalCompra + parseInt(prod.precio)
+    })
+    console.log(`Total $${totalCompra}`)
+}
 
 // let comidaExcursion = []
 // if (localStorage.getItem('comidaExcursion')) {
