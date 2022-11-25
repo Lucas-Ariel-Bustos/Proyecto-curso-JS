@@ -253,9 +253,6 @@ buttonAgregarComida.onclick = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-
-
-
 buttonFinalizar.onclick = () =>{
     let totalCompra = 0
     carrito.forEach(prod=>{
@@ -263,7 +260,3 @@ buttonFinalizar.onclick = () =>{
     })
     console.log(`Total $${totalCompra}`)
 }
-
-// // *****TRATANDO DE GUARDAR EL CARRITO EN LOCAL STORAGE*****
-// let carritoStorageJSON = JSON.stringify(carrito);
-// localStorage.setItem('carrito', carritoStorageJSON);
