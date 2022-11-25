@@ -241,6 +241,7 @@ buttonAgregarExcursión.onclick = () => {
     const excursionElegida = excursionesArray[indexExc]
     carrito.push(excursionElegida)
     console.log(carrito)
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
 // console.log(comidasArray)
@@ -249,7 +250,10 @@ buttonAgregarComida.onclick = () => {
     const comidaElegida = comidasArray[indexCom]
     carrito.push(comidaElegida)
     console.log(carrito)
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
+
+
 
 
 buttonFinalizar.onclick = () =>{
@@ -259,3 +263,7 @@ buttonFinalizar.onclick = () =>{
     })
     console.log(`Total $${totalCompra}`)
 }
+
+// // *****TRATANDO DE GUARDAR EL CARRITO EN LOCAL STORAGE*****
+// let carritoStorageJSON = JSON.stringify(carrito);
+// localStorage.setItem('carrito', carritoStorageJSON);
