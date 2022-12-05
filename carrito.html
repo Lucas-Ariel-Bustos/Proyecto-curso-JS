@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body class="bodyCarrito">
+    <header class="header">
+        <img class="logo" src="./assets/img/logo.jpg" alt="Logo de excursiones Mendoza">
+        <h1 class="nombreEmpresa">EXCURSIONES MENDOZA</h1>
+    </header>
+
+    <main class="contenedor-carrito">
+        <div class="contenedor-carrito__compra">
+            <h2 class="excursiones-titulo">Excursiones elegidas</h2>
+            <div class="contenedor-excursiones__carrito">
+                <p class="carritoVacio">Carrito vacío</p>
+                <div class="carritoConProductos disabled">
+                    <div class="excursionElegida">
+                        <img class="imagenProductoElegido" src="./assets/img/excursion puente del inca - cristo redentor.jpg" alt="Imágen de Puente del Inca" />
+                            <div class="excursion-detalles-elegido">
+                                <h2 class="descripcion-elegida">Alta montaña</h2>
+                            </div>
+                            <div class="cantidad">
+                                <p>Cantidad</p>
+                                <p>1</p>
+                            </div>
+                            <div class="precioExcursionElegida">
+                                <p>Precio</p>
+                                <p>$5000</p>
+                            </div>
+                            <div class="eliminarDeCarrito">
+                                <button><i class="bi bi-trash-fill"></i></button>
+                            </div>
+                </div>  
+            </div>
+            <button class="volverAcomprar">
+                <a class="SeguirComprando" target="_self" href="./index.html">Seguir Comprando</a>
+            </button>  
+            <div class="divVaciarCarrito disabled">
+                <button class="vaciarCarrito">Vaciar Carrito</button>
+            </div>
+        
+            <div class="divTotalCompra disabled">
+                <p>Total</p>
+                <p>$1000</p>
+                <button class="comprar">Comprar</button>
+            </div>
+            <p class="gracias disabled">Muchas gracias por tu compra <i class="bi bi-emoji-smile"></i></p>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>   
