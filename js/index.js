@@ -38,7 +38,7 @@ const excursiones = [
 ]
 
 const contenedorExcursiones = document.querySelector("#contenedor-excursiones")
-const botonesAgregarExcursion = document.querySelectorAll(".agregar-excursion")
+let botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar")
 
 function cargarExcursiones () {
     excursiones.forEach(excursion => {
@@ -48,29 +48,73 @@ function cargarExcursiones () {
             <img class="imagenProducto excursion-imagen1" src= "${excursion.imagen}" alt="${excursion.titulo}" />
                 <div class="excursion-detalles">
                     <h2 class="descripcion-producto1">${excursion.titulo}</h2>
-                    <p class="precioPotrerillos">$${5000}(Arg)</p>
-                    <button id="agregarExcursion" class="agregar-excursion" id="${excursion.id}">Agregar</button>
+                    <p class="precioPotrerillos">$${excursion.precio}(Arg)</p>
+                    <button id="agregarExcursion" class="excursion-agregar" id="${excursion.id}">Agregar</button>
                 </div>
-        `; contenedorExcursiones.append(div);
+        `; 
+        contenedorExcursiones.append(div);
     })
-    agregarExcursionAlCarrito();
+    actualizarBotonesAgregar();
+    // console.log(botonesAgregarExcursion)
 }
+cargarExcursiones(excursiones);
 
-cargarExcursiones();
+function actualizarBotonesAgregar() {
+    botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar")
 
-function agregarExcursionAlCarrito () {
-    botonesAgregarExcursion = document.querySelector(".agregar-excursion");
-    botonesAgregarExcursion.forEach(boton=>{
-        boton.addEventListener("click", agregarAlCarrito);
+    botonesAgregarExcursion.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito)
     })
 }
 
 const excursionesEnCarrito = [];
 
-function agregarAlCarrito(e) {
-    const id = e.currenTarget.id;
+function agregarAlCarrito(id) {
     console.log(id);
 }
+
+// *****ME QUEDÉ AGREGANDO PRODUCTOS AL CARRITO*****falla la eleccion de cada producto
+
+// *************AYUDA DEL TUTOR****************
+// function cargarExcursiones() {
+//     excursiones.forEach(excursion => {
+//         const div = document.createElement("div");
+//         div.classList.add("excursion");
+//         div.innerHTML = `
+//             <img class="imagenProducto excursion-imagen1" src= "${excursion.imagen}" alt="${excursion.titulo}" />
+//                 <div class="excursion-detalles">
+//                     <h2 class="descripcion-producto1">${excursion.titulo}</h2>
+//                     <p class="precioPotrerillos">$${excursion.precio}(Arg)</p>
+//                     <button class="agregar-excursion" id="boton-${excursion.id}">Agregar</button>
+//                 </div>
+//         `;
+//         contenedorExcursiones.appendChild(div);
+//         const botonesAgregarExcursion = document.getElementById(`boton-${excursion.id}`)
+//         botonesAgregarExcursion.addEventListener("click", () => agregarAlCarrito(excursion.id));
+//     })
+// }
+
+// function agregarAlCarrito(id) {
+//     console.log(id);
+// }
+
+// ****************************************
+
+// cargarExcursiones();
+
+// function agregarExcursionAlCarrito () {
+//     botonesAgregarExcursion = document.querySelector(".agregar-excursion");
+//     botonesAgregarExcursion.forEach(boton=>{
+//         boton.addEventListener("click", agregarAlCarrito);
+//     })
+// }
+
+// const excursionesEnCarrito = [];
+
+// function agregarAlCarrito(e) {
+//     const id = e.currenTarget.id;
+//     console.log(id);
+// }
 
 // //preentrega N°3
 // const selectExcursion = document.getElementById ('excursiones')
