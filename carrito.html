@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Excursiones Mendoza Carrito</title>
 </head>
+
 <body class="bodyCarrito">
     <header class="header">
         <img class="logo" src="./assets/img/logo.jpg" alt="Logo de excursiones Mendoza">
@@ -19,9 +20,10 @@
         <div class="contenedor-carrito__compra">
             <h2 class="excursiones-titulo">Excursiones elegidas</h2>
             <div class="contenedor-excursiones__carrito">
-                <p class="carritoVacio">Carrito vacío</p>
-                <div class="carritoConProductos disabled">
-                    <div class="excursionElegida">
+                <p id="carrito-vacio" class="carritoVacio">Carrito vacío</p>
+
+                <div id="carrito-excursiones" class="carritoConProductos disabled">
+                    <!-- <div class="excursionElegida">
                         <img class="imagenProductoElegido" src="./assets/img/excursion puente del inca - cristo redentor.jpg" alt="Imágen de Puente del Inca" />
                             <div class="excursion-detalles-elegido">
                                 <h2 class="descripcion-elegida">Alta montaña</h2>
@@ -34,24 +36,30 @@
                                 <p>Precio</p>
                                 <p>$5000</p>
                             </div>
+                            <div class="carrito-subtotal">
+                                <p>$10000</p>
+                            </div>
                             <div class="eliminarDeCarrito">
                                 <button><i class="bi bi-trash-fill"></i></button>
                             </div>
+                    </div> -->
                 </div>  
             </div>
-            <button class="volverAcomprar">
-                <a class="SeguirComprando" target="_self" href="./index.html">Seguir Comprando</a>
-            </button>  
-            <div class="divVaciarCarrito disabled">
+            <div id="carrito-acciones" class="carrito-acciones disabled" >
+                <button class="volverAcomprar">
+                    <a class="SeguirComprando" target="_self" href="./index.html">Seguir Comprando</a>
+                </button>  
+                <div class="divVaciarCarrito">
                 <button class="vaciarCarrito">Vaciar Carrito</button>
-            </div>
+                </div>
         
-            <div class="divTotalCompra disabled">
-                <p>Total</p>
-                <p>$1000</p>
-                <button class="comprar">Comprar</button>
+                <div class="divTotalCompra">
+                    <p>Total</p>
+                    <p>$1000</p>
+                    <button class="comprar">Comprar</button>
+                </div>
             </div>
-            <p class="gracias disabled">Muchas gracias por tu compra <i class="bi bi-emoji-smile"></i></p>
+            <p id="carrito-comprado" class="gracias disabled">Muchas gracias por tu compra <i class="bi bi-emoji-smile"></i></p>
         </div>
     </main>
 
@@ -59,6 +67,6 @@
 
     </footer>
 
-    <script src="./js/index.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 </html>   

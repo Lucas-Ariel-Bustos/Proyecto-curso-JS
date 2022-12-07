@@ -68,7 +68,7 @@ a {
     gap: 50px;
 }
 
-.imagenProducto {
+.excursion-imagen {
     max-width: 300px;
     height: 180px;
     border-radius: 10px;
@@ -76,7 +76,7 @@ a {
     box-shadow: 25px black;
 }
 
-.descripcion-producto2 {
+.excursion-titulo {
     font-size: 20px;
 }
 .excursion-detalles {
@@ -91,12 +91,12 @@ a {
     position: relative;
 }
 
-.excursion {
+/* .excursion {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-}
+} */
 
 .excursion-agregar {
     width: 90%;

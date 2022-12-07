@@ -1,4 +1,4 @@
-const excursiones = [
+let excursiones = [
     {
         id: "excursion-1",
         titulo: "Potrerillos (Dique)",
@@ -39,27 +39,32 @@ const excursiones = [
 
 const contenedorExcursiones = document.querySelector("#contenedor-excursiones")
 let botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar")
-
+const numerito = document.querySelector('#numerito')
+// let carrito = []
 function cargarExcursiones () {
     excursiones.forEach(excursion => {
         const div = document.createElement("div");
         div.classList.add("excursion");
         div.innerHTML = `
-            <img class="imagenProducto excursion-imagen1" src= "${excursion.imagen}" alt="${excursion.titulo}" />
+            <img class="imagenProducto excursion-imagen" src= "${excursion.imagen}" alt="${excursion.titulo}" />
                 <div class="excursion-detalles">
-                    <h2 class="descripcion-producto1">${excursion.titulo}</h2>
-                    <p class="precioPotrerillos">$${excursion.precio}(Arg)</p>
-                    <button id="agregarExcursion" class="excursion-agregar" id="${excursion.id}">Agregar</button>
+                    <h2 class="excursion-titulo">${excursion.titulo}</h2>
+                    <p class="excursion-precio">$${excursion.precio}(Arg)</p>
+                    <button id="${excursion.id}" class="excursion-agregar">Agregar</button>
                 </div>
         `; 
-        contenedorExcursiones.append(div);
+      
+        contenedorExcursiones.append(div)
+        // contenedorExcursiones.appendChild(div);
+        // const botonesAgregarExcursion = document.getElementById(`agregar${excursion.id}`)
+        // botonesAgregarExcursion.addEventListener("click", () => agregarAlCarrito(excursion.id));
     })
     actualizarBotonesAgregar();
-    // console.log(botonesAgregarExcursion)
 }
-cargarExcursiones(excursiones);
+cargarExcursiones();
 
-function actualizarBotonesAgregar() {
+
+    function actualizarBotonesAgregar() {
     botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar")
 
     botonesAgregarExcursion.forEach(boton => {
@@ -67,12 +72,113 @@ function actualizarBotonesAgregar() {
     })
 }
 
-const excursionesEnCarrito = [];
+let excursionesEnCarrito = [];
 
-function agregarAlCarrito(id) {
-    console.log(id);
+function agregarAlCarrito(e) {
+    const idBoton =e.currentTarget.id;
+    const excursionAgregada = excursiones.find(excursion => excursion.id === idBoton)
+    if(excursionesEnCarrito.some(excursion => excursion.id === idBoton)) {
+        const index = excursionesEnCarrito.findIndex(excursion => excursion.id === idBoton);
+        excursionesEnCarrito[index].cantidad++
+    } else {
+        excursionAgregada.cantidad = 1;
+        excursionesEnCarrito.push(excursionAgregada);
+    }
+    actualizarNumerito();
+   localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito))
 }
 
+function actualizarNumerito() {
+    let nuevoNnumerito = excursionesEnCarrito.reduce((acc, excursion) => acc + excursion.cantidad, 0);
+    numerito.innerText = nuevoNnumerito;
+}
+
+
+
+// function agregarAlCarrito(e) {
+//    const idBoton = e.currentTarget.id;
+//    let excursionAgregada = excursiones.find(excursion => excursion.id === idBoton);
+//    if(excursionesEnCarrito.some(excursion => excursion.id === idBoton)) {
+//         const index = excursionesEnCarrito.findIndex(excursion => excursion.id === idBoton)
+//         excursionesEnCarrito[index].cantidad++;
+//     }
+//     else {
+//         // excursionAgregada.cantidad = 1;
+//         excursionesEnCarrito.push(excursionAgregada);
+//     }
+
+//     console.log(excursionesEnCarrito)
+// }
+
+// let excursionesEnCarrito = [];
+
+// function agregarAlCarrito(e) {
+//    const idBoton = e.currentTarget.id;
+//    let excursionAgregada = excursiones.find(excursion => excursion.id === idBoton);
+//    if(excursionesEnCarrito.some(excursion => excursion.id === idBoton)) {
+//         const index = excursionesEnCarrito.findIndex(excursion => excursion.id === idBoton)
+//         excursionesEnCarrito[index].cantidad++;
+//     }
+//     else {
+//         // excursionAgregada.cantidad = 1;
+//         excursionesEnCarrito.push(excursionAgregada);
+//     }
+
+//     console.log(excursionesEnCarrito)
+// }
+
+    // const agregarAlCarrito = (prodId) => {
+    //     const item = excursiones.find((prod) => prod.id === prodId)
+    //     carrito.push(item)
+    //     console.log(carrito)
+    // }
+
+
+    // actualizarBotonesAgregar();
+    // console.log(botonesAgregarExcursion)
+// }
+// cargarExcursiones(excursiones);
+
+
+
+// let excursionesEnCarrito = [];
+
+// function agregarAlCarrito(e) {
+//    const idBoton = e.currentTarget.id;
+//    let excursionAgregada = excursiones.find(excursion => excursion.id === idBoton);
+//    if(excursionesEnCarrito.some(excursion => excursion.id === idBoton)) {
+//         const index = excursionesEnCarrito.findIndex(excursion => excursion.id === idBoton)
+//         excursionesEnCarrito[index].cantidad++;
+//     }
+//     else {
+//         // excursionAgregada.cantidad = 1;
+//         excursionesEnCarrito.push(excursionAgregada);
+//     }
+
+//     console.log(excursionesEnCarrito)
+// }
+
+
+// let discoAgregado;
+
+// function agregarAlCarrito(e) {
+//   TOASagregandoAlCarrito();  
+//   const idBoton = e.currentTarget.id;
+//    discoAgregado = discosArreglo.find(disco => disco.id === idBoton);
+
+//   if(carrito.some(disco => disco.id === idBoton)) {
+//     const index = carrito.findIndex(disco => disco.id === idBoton);
+//     carrito[index].cantidad++;
+//   }
+//   else {
+//     discoAgregado.cantidad = 1;
+//     carrito.push(discoAgregado); 
+//   }
+
+//   actualizarNumerito();
+// localStorage.setItem("ProductosEnCarrito", JSON.stringify(carrito));
+// totalTodo();
+// }
 // *****ME QUEDÉ AGREGANDO PRODUCTOS AL CARRITO*****falla la eleccion de cada producto
 
 // *************AYUDA DEL TUTOR****************
