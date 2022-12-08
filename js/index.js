@@ -40,7 +40,7 @@ let excursiones = [
 const contenedorExcursiones = document.querySelector("#contenedor-excursiones")
 let botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar")
 const numerito = document.querySelector('#numerito')
-// let carrito = []
+
 function cargarExcursiones () {
     excursiones.forEach(excursion => {
         const div = document.createElement("div");
@@ -52,12 +52,8 @@ function cargarExcursiones () {
                     <p class="excursion-precio">$${excursion.precio}(Arg)</p>
                     <button id="${excursion.id}" class="excursion-agregar">Agregar</button>
                 </div>
-        `; 
-      
+        `;      
         contenedorExcursiones.append(div)
-        // contenedorExcursiones.appendChild(div);
-        // const botonesAgregarExcursion = document.getElementById(`agregar${excursion.id}`)
-        // botonesAgregarExcursion.addEventListener("click", () => agregarAlCarrito(excursion.id));
     })
     actualizarBotonesAgregar();
 }
@@ -79,18 +75,21 @@ function agregarAlCarrito(e) {
     const excursionAgregada = excursiones.find(excursion => excursion.id === idBoton)
     if(excursionesEnCarrito.some(excursion => excursion.id === idBoton)) {
         const index = excursionesEnCarrito.findIndex(excursion => excursion.id === idBoton);
-        excursionesEnCarrito[index].cantidad++
+        excursionesEnCarrito[index].cantidad++;
     } else {
         excursionAgregada.cantidad = 1;
         excursionesEnCarrito.push(excursionAgregada);
     }
     actualizarNumerito();
-   localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito))
+    
+    const excursionesEnCarritoJSON = JSON.stringify(excursionesEnCarrito);
+    localStorage.setItem("excursion-en-carrito", excursionesEnCarritoJSON);
+//    localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito));
 }
 
 function actualizarNumerito() {
-    let nuevoNnumerito = excursionesEnCarrito.reduce((acc, excursion) => acc + excursion.cantidad, 0);
-    numerito.innerText = nuevoNnumerito;
+    let nuevoNumerito = excursionesEnCarrito.reduce((acc, excursion) => acc + excursion.cantidad, 0);
+    numerito.innerText = nuevoNumerito;
 }
 
 
