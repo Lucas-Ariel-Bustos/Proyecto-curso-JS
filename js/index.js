@@ -61,14 +61,22 @@ cargarExcursiones();
 
 
     function actualizarBotonesAgregar() {
-    botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar")
+    botonesAgregarExcursion = document.querySelectorAll(".excursion-agregar");
 
     botonesAgregarExcursion.forEach(boton => {
-        boton.addEventListener("click", agregarAlCarrito)
+        boton.addEventListener("click", agregarAlCarrito);
     })
 }
+let excursionesEnCarrito;
 
-let excursionesEnCarrito = [];
+let excursionesEnCarritoLS = localStorage.getItem("excursiones-en-carrito");
+
+if(excursionesEnCarritoLS) {
+    excursionesEnCarrito = JSON.parse(excursionesEnCarritoLS);
+    actualizarNumerito()
+} else {
+    excursionesEnCarrito = [];
+}
 
 function agregarAlCarrito(e) {
     const idBoton =e.currentTarget.id;
@@ -82,9 +90,7 @@ function agregarAlCarrito(e) {
     }
     actualizarNumerito();
     
-    const excursionesEnCarritoJSON = JSON.stringify(excursionesEnCarrito);
-    localStorage.setItem("excursion-en-carrito", excursionesEnCarritoJSON);
-//    localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito));
+   localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito));
 }
 
 function actualizarNumerito() {
