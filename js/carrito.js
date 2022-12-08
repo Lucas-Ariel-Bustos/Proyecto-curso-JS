@@ -1,15 +1,17 @@
 let excursionesEnCarrito = localStorage.getItem("excursiones-en-carrito");
 excursionesEnCarrito = JSON.parse(excursionesEnCarrito);
 
-
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoExcursiones = document.querySelector("#carrito-excursiones");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
-let botonesEliminarExcursion = document.querySelector(".eliminar-excursion");
+let botonesEliminarExcursion = document.querySelectorAll(".eliminar-excursion");
+const botonVaciarCarrito = document.querySelector("#vaciar-carrito");
+const carritoTotal = document.querySelector("#total");
+const botonComprar = document.querySelector("#comprar-carrito")
 
 function cargarExcursionesEnCarrito() {
-    if (excursionesEnCarrito && excursionesEnCarrito > 0) {
+    if (excursionesEnCarrito && excursionesEnCarrito.length > 0) {
         contenedorCarritoVacio.classList.add("disabled");
         contenedorCarritoExcursiones.classList.remove("disabled");
         contenedorCarritoAcciones.classList.remove("disabled");
@@ -51,6 +53,7 @@ function cargarExcursionesEnCarrito() {
         contenedorCarritoComprado.classList.add("disabled"); 
     }
     actualizarBotonesEliminar();
+    actualizarTotal();
 }
 cargarExcursionesEnCarrito();
 
@@ -69,4 +72,29 @@ function eliminarDelCarrito(e) {
     excursionesEnCarrito.splice(index, 1);
     cargarExcursionesEnCarrito();
     localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito));
+}
+
+botonVaciarCarrito.addEventListener("click", vaciarCarrito);
+
+function vaciarCarrito() {
+    excursionesEnCarrito.length = 0;
+    localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito));
+    cargarExcursionesEnCarrito();
+}
+
+function actualizarTotal() {
+    const totalCarrito = excursionesEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    total.innerText = `$${totalCarrito}`;
+}
+
+botonComprar.addEventListener("click", comprarCarrito);
+
+function comprarCarrito() {
+    excursionesEnCarrito.length = 0;
+    localStorage.setItem("excursiones-en-carrito", JSON.stringify(excursionesEnCarrito));
+   
+    contenedorCarritoVacio.classList.add("disabled");
+    contenedorCarritoExcursiones.classList.add("disabled");
+    contenedorCarritoAcciones.classList.add("disabled");
+    contenedorCarritoComprado.classList.remove("disabled"); 
 }
