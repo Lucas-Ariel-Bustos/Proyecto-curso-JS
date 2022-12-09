@@ -97,3 +97,19 @@ function actualizarNumerito() {
     let nuevoNumerito = excursionesEnCarrito.reduce((acc, excursion) => acc + excursion.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 }
+
+const listaExcursionesProximas = document.querySelector("#lista-excursiones-proximas")
+
+fetch("./js/nuevasExcursiones.json")
+    .then(response => response.json())
+    .then(data => {
+        listaNuevas(data);
+    })    
+
+    function listaNuevas(excursiones) {
+        excursiones.forEach(excursion => {
+            const li = document.createElement("li");
+            li.innerText = "*" + excursion.titulo + " (" + excursion.descripcion + ")";
+            listaExcursionesProximas.append(li);
+        });
+    }

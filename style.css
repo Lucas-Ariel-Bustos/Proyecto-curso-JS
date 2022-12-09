@@ -58,7 +58,7 @@ a {
     color: antiquewhite;
 }
 
-.contenedor-excursiones {
+.contenedor-excursiones, .excursiones-proximas {
     margin: 1rem;
     padding: 2rem;
     background-color: bisque;
@@ -91,13 +91,6 @@ a {
     position: relative;
 }
 
-/* .excursion {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-} */
-
 .excursion-agregar {
     width: 90%;
     border: 0;
@@ -106,7 +99,7 @@ a {
     cursor: pointer;
 }
 
-.agregar-excursion:hover {
+.excursion-agregar:hover {
     background-color: cadetblue;
     color: black;
     border: 1px solid;
@@ -231,11 +224,26 @@ a {
     background-color: none; 
 }
 
-.bi {
+.bi-file-excel {
+    font-size: large;
+    border: none;
+}
+
+.bi-file-excel:hover {
+    background-color: cadetblue;
+    color: black;
+    border: 1px solid;
+    border-color: rgb(192, 8, 155);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.bi-trash-fill {
     font-size: 30px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .disabled {

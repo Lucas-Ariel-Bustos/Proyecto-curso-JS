@@ -40,7 +40,7 @@ function cargarExcursionesEnCarrito() {
                     <p>$${excursion.precio * excursion.cantidad}</p>
                 </div>
                 <div class="eliminarDeCarrito">
-                    <button class="eliminar-excursion" id="${excursion.id}"><i class="bi bi-trash-fill"></i></button>
+                    <button class="eliminar-excursion" id="${excursion.id}"><i class="bi bi-file-excel"></i></i></button>
                 </div>
             `;
             contenedorCarritoExcursiones.append(div);
@@ -98,3 +98,22 @@ function comprarCarrito() {
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled"); 
 }
+
+botonComprar.addEventListener("click", () => {
+//    *****Dejo los comentarios que me da "Toastify"*******
+   
+    Toastify({
+        text: "Nos vemos pronto",
+        duration: 6000,
+        destination: "./index.html",
+        newWindow: true,
+        close: false,
+        gravity: "bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+})
